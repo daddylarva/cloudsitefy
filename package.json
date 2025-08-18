@@ -1,9 +1,17 @@
 {
   "name": "cloudsitefy",
   "version": "1.0.0",
-  "engines": { "node": ">=18" },
-  "scripts": {
-    "start": "node server.js"
+  "description": "CloudSitefy App Hosting Backend",
+  "main": "server.js",
+  "engines": { 
+    "node": ">=18" 
   },
-  "dependencies": {}
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {},
+  "keywords": ["cloudsitefy", "app-hosting", "firebase"],
+  "author": "CloudSitefy Team",
+  "license": "MIT"
 }

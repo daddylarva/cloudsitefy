@@ -2,8 +2,3 @@ runtime: nodejs20
 build:
   command: npm ci || npm install
 entrypoint: npm run start
-env:
-  - name: NODE_ENV
-    value: production
-  - name: PORT
-    value: "8080"

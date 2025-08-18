@@ -1,5 +1,6 @@
 const http = require('http');
 const PORT = process.env.PORT || 8080;
+const NODE_ENV = process.env.NODE_ENV || 'production';
 
 const server = http.createServer((req, res) => {
   // CORS 헤더 설정
@@ -48,5 +49,5 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, '0.0.0.0', () => {
   console.log('CloudSitefy App Hosting server listening on port', PORT);
-  console.log('Environment:', process.env.NODE_ENV || 'development');
+  console.log('Environment:', NODE_ENV);
 });

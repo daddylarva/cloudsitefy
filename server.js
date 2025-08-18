@@ -6,6 +6,4 @@ const server = http.createServer((req, res) => {
   res.end('<h1>Cloudsitefy App Hosting OK</h1>');
 });
 
-server.listen(PORT, () => {
-  console.log(`listening on ${PORT}`);
-});
+server.listen(PORT, () => console.log('listening on', PORT));

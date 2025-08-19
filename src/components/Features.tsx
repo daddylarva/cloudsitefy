@@ -95,16 +95,20 @@ const Features = () => {
             const colors = getColorClasses(feature.color)
             return (
               <div 
-                key={index} 
+                key={feature.title} 
                 className="card card-hover group animate-fade-in-up"
                 style={{ animationDelay: `${(index + 1) * 100}ms` }}
               >
-                <div className={`w-16 h-16 ${colors.bg} rounded-2xl flex items-center justify-center ${colors.text} mb-6 group-hover:scale-110 transition-transform duration-300 shadow-soft`}>
-                  {feature.icon}
+                <div className={`w-16 h-16 ${colors.bg} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={colors.text}>
+                    {feature.icon}
+                  </div>
                 </div>
+                
                 <h3 className={`text-xl font-bold text-secondary-900 mb-4 group-hover:${colors.hover} transition-colors duration-300`}>
                   {feature.title}
                 </h3>
+                
                 <p className="text-secondary-600 leading-relaxed">
                   {feature.description}
                 </p>

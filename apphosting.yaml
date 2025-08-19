@@ -1,4 +1,0 @@
-runtime: nodejs20
-build:
-  command: npm ci || npm install
-entrypoint: npm run start

@@ -74,7 +74,7 @@ const ContactForm = () => {
     setErrorMessage('')
 
     try {
-      const response = await fetch('https://us-central1-cloudsitefy.cloudfunctions.net/api', {
+      const response = await fetch('/api', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

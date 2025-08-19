@@ -92,20 +92,4 @@
   .animation-delay-300 {
     animation-delay: 300ms;
   }
-  
-  .animation-delay-400 {
-    animation-delay: 400ms;
-  }
-  
-  .animation-delay-500 {
-    animation-delay: 500ms;
-  }
-
-  .perspective-1000 {
-    perspective: 1000px;
-  }
-
-  .preserve-3d {
-    transform-style: preserve-3d;
-  }
 }

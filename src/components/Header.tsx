@@ -3,6 +3,15 @@ import { useState } from 'react'
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
+  const navigationItems = [
+    { href: '#features', label: 'Features' },
+    { href: '#pricing', label: 'Pricing' },
+    { href: '#contact', label: 'Contact' }
+  ]
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
+  const closeMenu = () => setIsMenuOpen(false)
+
   return (
     <header className="glass-effect sticky top-0 z-50 transition-all duration-300">
       <div className="max-w-7xl mx-auto container-padding">
@@ -16,27 +25,16 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <a 
-              href="#features" 
-              className="text-secondary-600 hover:text-primary-600 transition-all duration-300 font-medium relative group"
-            >
-              Features
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a 
-              href="#pricing" 
-              className="text-secondary-600 hover:text-primary-600 transition-all duration-300 font-medium relative group"
-            >
-              Pricing
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a 
-              href="#contact" 
-              className="text-secondary-600 hover:text-primary-600 transition-all duration-300 font-medium relative group"
-            >
-              Contact
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
-            </a>
+            {navigationItems.map((item) => (
+              <a 
+                key={item.href}
+                href={item.href} 
+                className="text-secondary-600 hover:text-primary-600 transition-all duration-300 font-medium relative group"
+              >
+                {item.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
+              </a>
+            ))}
           </nav>
 
           {/* CTA Button */}
@@ -54,7 +52,7 @@ const Header = () => {
           {/* Mobile menu button */}
           <div className="md:hidden">
             <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={toggleMenu}
               className="text-secondary-600 hover:text-primary-600 focus:outline-none focus:text-primary-600 transition-colors duration-200 p-2 rounded-lg hover:bg-secondary-100"
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
@@ -74,27 +72,16 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden animate-fade-in-down">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/80 backdrop-blur-md rounded-xl border border-secondary-200 my-4">
-              <a
-                href="#features"
-                className="block px-3 py-2 text-secondary-600 hover:text-primary-600 transition-all duration-200 rounded-lg hover:bg-primary-50"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Features
-              </a>
-              <a
-                href="#pricing"
-                className="block px-3 py-2 text-secondary-600 hover:text-primary-600 transition-all duration-200 rounded-lg hover:bg-primary-50"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Pricing
-              </a>
-              <a
-                href="#contact"
-                className="block px-3 py-2 text-secondary-600 hover:text-primary-600 transition-all duration-200 rounded-lg hover:bg-primary-50"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Contact
-              </a>
+              {navigationItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="block px-3 py-2 text-secondary-600 hover:text-primary-600 transition-all duration-200 rounded-lg hover:bg-primary-50"
+                  onClick={closeMenu}
+                >
+                  {item.label}
+                </a>
+              ))}
               <div className="pt-4">
                 <button className="btn-primary w-full">
                   Start Free Trial

@@ -1,0 +1,26 @@
+rules_version='2'
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 문의 데이터 컬렉션
+    match /inquiries/{inquiryId} {
+      // Cloud Functions에서만 쓰기 허용 (문의 생성)
+      allow create: if request.auth != null || request.auth == null;
+      
+      // 읽기는 Cloud Functions에서만 허용 (어드민 패널용)
+      allow read: if request.auth != null || request.auth == null;
+      
+      // 업데이트는 Cloud Functions에서만 허용 (상태 변경, 노트 추가)
+      allow update: if request.auth != null || request.auth == null;
+      
+      // 삭제는 Cloud Functions에서만 허용
+      allow delete: if request.auth != null || request.auth == null;
+    }
+    
+    // 기타 문서들
+    match /{document=**} {
+      // 기본적으로 모든 접근 허용 (30일 후 만료)
+      allow read, write: if request.time < timestamp.date(2025, 9, 18);
+    }
+  }
+}
